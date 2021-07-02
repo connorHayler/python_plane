@@ -8,5 +8,8 @@ class Testing(unittest.TestCase):
         self.assertIsNotNone(passenger.f_name)
         with open("passenger_records.json", "r") as file:
             json_file = json.load(file)
-            id = json_file["passportID"]
+            passenger_json = json_file["passenger"]
+            for person in passenger_json:
+                if person["passportNumber"] == "passportID":
+                    id = person["passportNumber"]
             self.assertEquals(id, "passportID")
