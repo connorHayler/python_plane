@@ -5,6 +5,7 @@ from passenger import Passenger
 
 class Testing(unittest.TestCase):
     passenger = Passenger("fName", "lName", "passportID")
+    passenger.add()
     def test_passenger_create(self):
         self.assertIsInstance(self.passenger, Passenger)
         self.assertIsNotNone(self.passenger.f_name)
@@ -15,3 +16,4 @@ class Testing(unittest.TestCase):
                 if person["passportNumber"] == "passportID":
                     id = person["passportNumber"]
             self.assertEquals(id, "passportID")
+
