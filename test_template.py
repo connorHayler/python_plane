@@ -64,7 +64,7 @@ class Testing(unittest.TestCase):
         for flight in flight_json:
             if flight["flightID"] == "flightid":
                 for passenger in flight:
-                    if passenger["passport"] == "passportID"
+                    if passenger["passport"] == "passportID":
                         self.assertEquals(passenger["fName"], "fName")
                         self.assertEquals(passenger["lName"], "lName")
                         self.assertEquals(passenger["age"], "age")
