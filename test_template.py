@@ -58,8 +58,21 @@ class Testing(unittest.TestCase):
                 self.assertEquals(flight["departure"], "newTime")
                 break
 
+    def test_add_passenger_to_flight(self):
+        self.flight.add_passenger(self.passenger)
+        flight_json = json_open("flight_records.json")
+        for flight in flight_json:
+            if flight["flightID"] == "flightid":
+                for passenger in flight:
+                    if passenger["passport"] == "passportID"
+                        self.assertEquals(passenger["fName"], "fName")
+                        self.assertEquals(passenger["lName"], "lName")
+                        self.assertEquals(passenger["age"], "age")
+                        break
 
-def json_open(file_name, id_check, perms="r"):
+
+
+def json_open(file_name, perms="r"):
     with open(file_name, perms) as file:
         json_file = json.load(file)
         return json_file[0]
