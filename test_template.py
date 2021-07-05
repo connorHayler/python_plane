@@ -45,11 +45,17 @@ class Testing(unittest.TestCase):
                     break
 
     def test_change_trip(self):
-        self.flight.changeVehicle("Helicopter")
+        self.flight.changeVehicle("Heliplane")
+        self.flight.changeDestination("Test")
+        self.flight.changeOrigin("TestOrigin")
+        self.flight.changeDepartureTime("newTime")
         flight_json = json_open("flight_records.json")
         for flight in flight_json:
             if flight["flightID"] == "flightid":
-                self.assertEquals(flight["vehicle"], "helicopter")
+                self.assertEquals(flight["vehicle"], "heliplane")
+                self.assertEquals(flight["destination"], "Test")
+                self.assertEquals(flight["origin"], "TestOrigin")
+                self.assertEquals(flight["departure"], "newTime")
                 break
 
 
