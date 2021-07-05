@@ -70,6 +70,8 @@ class Testing(unittest.TestCase):
                         self.assertEquals(passenger["age"], "age")
                         break
 
+    def test_report(self):
+        self.assertIsNotNone(self.flight.report())
 
 
 def json_open(file_name, perms="r"):
