@@ -2,10 +2,13 @@ import unittest
 import json
 import pytest
 from passenger import Passenger
+from vehicle import Vehicle
+from flight import Flight
 
 class Testing(unittest.TestCase):
+    plane = Vehicle("planeID", "Plane", "total passenger", "age")
     passenger = Passenger("fName", "lName", "passportID")
-    flight = Flight("origin", "destination", "vehicle", "departure time")
+    flight = Flight("origin", "destination", plane, "departure time")
     passenger.add()
     def test_passenger_create(self):
         self.assertIsInstance(self.passenger, Passenger)
@@ -21,7 +24,7 @@ class Testing(unittest.TestCase):
 
     def test_flight_trip(self):
         self.assertIsInstance(self.flight, Flight)
-        with open("flight_records.json") as file:
+        with open("flight_records.json", "r") as file:
             json_file = json.load(file)
             flight_json = json_file["flight"]
             for flight in flight_json:
@@ -29,6 +32,17 @@ class Testing(unittest.TestCase):
                     destination = flight["destination"]
                     break
             self.assertEquals(destination, "destination")
+
+    def test_vehicle(self):
+        with open("vehicle_records.json", "r") as file:
+            json_file = json.load(file)
+            vehicle_json = json_file["vehicles"]
+            for vehicle in vehicle_json:
+                if vehicle["id"] == "testID":
+                    self.assertEquals(vehicle["passengers"], 32)
+                    break
+
+
 
 
 
